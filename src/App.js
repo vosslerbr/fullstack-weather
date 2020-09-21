@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Currently from "./components/Currently";
 import Hourly from "./components/Hourly";
+import Daily from "./components/Daily";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -79,6 +80,7 @@ export default class App extends React.Component {
         <h1>Next 5 Hours</h1>
         <Hourly data={this.state.hourly} />
         <h1>5 Day Outlook</h1>
+        <Daily data={this.state.daily} />
       </div>
     );
   }
