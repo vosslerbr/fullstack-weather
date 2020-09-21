@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      selectedCity: "",
+      selectedCity: "chicago",
       currently: [],
       hourly: [],
       daily: [],
@@ -19,24 +19,10 @@ export default class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
 
-  componentDidMount() {
-    axios.get(`http://localhost:5000/chicago`).then((res) => {
-      const currently = res.data.currentWeatherData;
-      const hourly = res.data.hourlyWeatherData;
-      const daily = res.data.dailyWeatherData;
-      const alerts = res.data.weatherAlerts;
-      const mapData = res.data.mapData;
-      this.setState({ currently, hourly, daily, alerts, mapData });
-    });
-  }
-
-  handleChange(event) {
-    this.setState({ selectedCity: event.target.value });
-  }
-
-  handleSubmit(event) {
+  fetchData() {
     axios
       .get(`http://localhost:5000/${this.state.selectedCity}`)
       .then((res) => {
@@ -45,15 +31,22 @@ export default class App extends React.Component {
         const daily = res.data.dailyWeatherData;
         const alerts = res.data.weatherAlerts;
         const mapData = res.data.mapData;
-        this.setState({
-          selectedCity: "",
-          currently,
-          hourly,
-          daily,
-          alerts,
-          mapData,
-        });
+        this.setState({ currently, hourly, daily, alerts, mapData });
       });
+    console.log("got data");
+  }
+
+  componentDidMount() {
+    this.fetchData();
+    setInterval(this.fetchData, 300000); // runs every 5 minutes.
+  }
+
+  handleChange(event) {
+    this.setState({ selectedCity: event.target.value });
+  }
+
+  handleSubmit(event) {
+    this.fetchData(this.state.selectedCity);
     event.preventDefault();
   }
 
