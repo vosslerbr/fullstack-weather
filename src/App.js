@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import FeelsLike from "./components/FeelsLike";
-import Condition from "./components/Condition";
+import Currently from "./components/Currently";
+import Hourly from "./components/Hourly";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,7 +9,10 @@ export default class App extends React.Component {
 
     this.state = {
       selectedCity: "",
-      weatherData: [],
+      currently: [],
+      hourly: [],
+      daily: [],
+      alerts: [],
       mapData: [],
     };
 
@@ -19,9 +22,12 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios.get(`http://localhost:5000/chicago`).then((res) => {
-      const weatherData = res.data.currentWeatherData;
+      const currently = res.data.currentWeatherData;
+      const hourly = res.data.hourlyWeatherData;
+      const daily = res.data.dailyWeatherData;
+      const alerts = res.data.weatherAlerts;
       const mapData = res.data.mapData;
-      this.setState({ weatherData, mapData });
+      this.setState({ currently, hourly, daily, alerts, mapData });
     });
   }
 
@@ -33,14 +39,27 @@ export default class App extends React.Component {
     axios
       .get(`http://localhost:5000/${this.state.selectedCity}`)
       .then((res) => {
-        const weatherData = res.data.currentWeatherData;
+        const currently = res.data.currentWeatherData;
+        const hourly = res.data.hourlyWeatherData;
+        const daily = res.data.dailyWeatherData;
+        const alerts = res.data.weatherAlerts;
         const mapData = res.data.mapData;
-        this.setState({ selectedCity: "", weatherData, mapData });
+        this.setState({
+          selectedCity: "",
+          currently,
+          hourly,
+          daily,
+          alerts,
+          mapData,
+        });
       });
     event.preventDefault();
   }
 
   render() {
+    if (!this.state.currently.weather) {
+      return <span>Loading...</span>;
+    }
     return (
       <div>
         <form>
@@ -52,9 +71,13 @@ export default class App extends React.Component {
           />
           <button onClick={this.handleSubmit}>Search</button>
         </form>
-        <p>{this.state.mapData.text}</p>
-        <FeelsLike data={this.state.weatherData.feels_like} />
-        <Condition data={this.state.weatherData.humidity} />
+        <h1>Right Now</h1>
+        <Currently
+          data={this.state.currently}
+          currentCity={this.state.mapData}
+        />
+        <h1>Next 5 Hours</h1>
+        <Hourly data={this.state.hourly} />
       </div>
     );
   }

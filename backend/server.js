@@ -34,7 +34,22 @@ app.get("/:citySearch", (req, res) => {
       res.json({
         // send a JSON response to client with the appropriate data
         currentWeatherData: weatherData.current,
-        mapData: mapData.features[0],
+        hourlyWeatherData: [
+          weatherData.hourly["0"],
+          weatherData.hourly["1"],
+          weatherData.hourly["2"],
+          weatherData.hourly["3"],
+          weatherData.hourly["4"],
+        ],
+        dailyWeatherData: [
+          weatherData.daily["0"],
+          weatherData.daily["1"],
+          weatherData.daily["2"],
+          weatherData.daily["3"],
+          weatherData.daily["4"],
+        ],
+        weatherAlerts: weatherData.alerts,
+        mapData: mapData.features[0].text,
       });
     });
   });
