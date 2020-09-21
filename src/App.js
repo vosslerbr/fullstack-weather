@@ -78,6 +78,7 @@ export default class App extends React.Component {
         />
         <h1>Next 5 Hours</h1>
         <Hourly data={this.state.hourly} />
+        <h1>5 Day Outlook</h1>
       </div>
     );
   }

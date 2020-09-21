@@ -32,7 +32,12 @@ export default class FeelsLike extends Component {
         <h2>{this.props.currentCity}</h2>
         <div>
           <div>
-            <p>Icon: {this.props.data.weather[0].icon}</p>
+            <img
+              src={require(`../images/icons/${this.props.data.weather[0].icon}.svg`)}
+              alt=""
+              width="100px"
+              height="100px"
+            />
           </div>
           <div>
             <p>{Math.round(this.props.data.temp)}</p>
