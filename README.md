@@ -18,9 +18,15 @@ Once we get the response from OpenWeatherMap, 2 things happen:
 
 First, the data is parsed as JSON and saved to a variable. Then, 5 new variables are created to hold different data sets.
 
-currentWeatherData holds the data for the current conditions at the time of request.
+**currentWeatherData** holds the data for the current conditions at the time of request.
 
-hourlyWeatherData and dailyWeatherData are actually arrays that hold the data for the next 5 hours days respectively
+**hourlyWeatherData** and **dailyWeatherData** are actually arrays that hold the data for the next 5 hours days respectively
+
+**weatherAlerts** holds the data for any alert objects if they exist
+
+**mapData** just contains the properly formatted (basically just capitalized) city name from the MapBox response.
+
+These 5 variables are sent to the client as JSON to be used by the React front end.
 
 ### Front End
 
