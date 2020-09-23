@@ -30,4 +30,10 @@ These 5 variables are sent to the client as JSON to be used by the React front e
 
 ### Front End
 
-The front end is built with React. When the app loads, it immediately fetches the appropriate MapBox and OpenWeatherMap data for the city of Chicago.
+The front end is built with React. When the app loads, it immediately fetches the appropriate MapBox and OpenWeatherMap data for the city of Chicago. While the data is fetched, we see a simple loading screen which will appear for a minimum of 1 second so as not to appear and disappear rapidly and thus be jarring to the user. The app will continue to fetch this data every 5 minutes.
+
+Once the server responds, the JSON is seperated out and placed into state in a similar fashion it was sent by the server (currently, hourly, daily...). State also holds the currently selected city name. This will come into play in a bit.
+
+When the user enters a city name in the search bar, the city name in state is updated and used in the new Axios request. Then the entire process starts again. Data is fetched from the server, returned as JSON, and placed into state. Obviously this updates the entire DOM structure as well.
+
+Future plans include the addition of an alert dialog to appear above the 'Right Now' section if any alerts exist. Search suggestions and a color scheme toggle are also on the horizon!
