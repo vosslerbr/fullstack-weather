@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import "./styles/reset.css";
+import "./styles/index.css";
 import Currently from "./components/Currently";
 import Hourly from "./components/Hourly";
 import Daily from "./components/Daily";
@@ -74,6 +76,16 @@ export default class App extends React.Component {
         <Hourly data={this.state.hourly} />
         <h1>5 Day Outlook</h1>
         <Daily data={this.state.daily} />
+        <div>
+          Icons made by{" "}
+          <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">
+            iconixar
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+        </div>
       </div>
     );
   }

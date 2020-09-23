@@ -28,31 +28,37 @@ export default class FeelsLike extends Component {
 
   render() {
     return (
-      <div>
+      <div className={"section"}>
         <h2>{this.props.currentCity}</h2>
         <div>
-          <div>
-            <img
-              src={require(`../images/icons/${this.props.data.weather[0].icon}.svg`)}
-              alt=""
-              width="100px"
-              height="100px"
-            />
+          <div className="current-main">
+            <div className="current-main-image">
+              <img
+                src={require(`../images/icons/${this.props.data.weather[0].icon}.svg`)}
+                alt=""
+                width="110px"
+                height="110px"
+              />
+            </div>
+            <div>
+              <p className="current-main-temp">
+                {Math.round(this.props.data.temp)}
+              </p>
+              <p className="current-main-condition">
+                {this.props.data.weather[0].description}
+              </p>
+            </div>
           </div>
-          <div>
-            <p>{Math.round(this.props.data.temp)}</p>
-            <p>{this.props.data.weather[0].description}</p>
-          </div>
-        </div>
 
-        <div>
-          <p>Feels Like: {Math.round(this.props.data.feels_like)}</p>
-          <p>Humidity: {Math.round(this.props.data.humidity) + "%"}</p>
-          <p>
-            Wind:
-            {" " + this.getWindDirection(this.props.data.wind_deg)}
-            {" " + Math.round(this.props.data.wind_speed) + "mph"}
-          </p>
+          <div>
+            <p>Feels Like: {Math.round(this.props.data.feels_like)}</p>
+            <p>Humidity: {Math.round(this.props.data.humidity) + "%"}</p>
+            <p>
+              Wind:
+              {" " + this.getWindDirection(this.props.data.wind_deg)}
+              {" " + Math.round(this.props.data.wind_speed) + "mph"}
+            </p>
+          </div>
         </div>
       </div>
     );
