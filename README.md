@@ -1,6 +1,6 @@
 # fullstack-weather
 
-A fullstack weather application built with React, Express, and the APIs from MapBox and OpenWeatherMap
+A **complete rebuild** of my weather application. This time built with React, Express, and the APIs from MapBox and OpenWeatherMap. 🤠
 
 ## How It Works
 
