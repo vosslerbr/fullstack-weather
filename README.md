@@ -36,4 +36,6 @@ Once the server responds, the JSON is seperated out and placed into state in a s
 
 When the user enters a city name in the search bar, the city name in state is updated and used in the new Axios request. Then the entire process starts again. Data is fetched from the server, returned as JSON, and placed into state. Obviously this updates the entire DOM structure as well.
 
+## What's Next?
+
 Future plans include the addition of an alert dialog to appear above the 'Right Now' section if any alerts exist. Search suggestions and a color scheme toggle are also on the horizon!
