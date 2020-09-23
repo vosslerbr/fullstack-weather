@@ -4,7 +4,13 @@ A **complete rebuild** of my original weather application. This time built with 
 
 ## Why a rebuild?
 
-After learning the basics of the MERN stack, I decided to finally rebuild my weather application using my new knowledge. It also allowed me to finally hide my API keys in a .env file (since the old version was only a front end app, they were in plain sight for all. *OOPS!*).
+After learning the basics of the MERN stack, I decided to finally rebuild my weather application using my new knowledge. 
+
+Having a back end allowed me to finally hide my API keys in a .env file (since the old version was only a front end app, they were in plain sight for all. *OOPS!*).
+
+React allowed me to write my code in a more modular way, helping keep me from repeating a lot of code. It also allowed me to fetch data at an interval without having to re-render the entire DOM.
+
+I'm sure there are more, but these are the main improvments that come to mind.
 
 ## How It Works
 
