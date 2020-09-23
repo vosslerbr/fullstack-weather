@@ -1,6 +1,10 @@
 # fullstack-weather
 
-A **complete rebuild** of my weather application. This time built with React, Express, and the APIs from MapBox and OpenWeatherMap. 🤠
+A **complete rebuild** of my original weather application. This time built with React, Express, and the APIs from MapBox and OpenWeatherMap. 🤠
+
+## Why a rebuild?
+
+After learning the basics of the MERN stack, I decided to finally rebuild my weather application using my new knowledge. It also allowed me to finally hide my API keys in a .env file (since the old version was only a front end app, they were in plain sight for all. *OOPS!*).
 
 ## How It Works
 
