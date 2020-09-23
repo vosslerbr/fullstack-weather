@@ -6,14 +6,14 @@ export default class Day extends Component {
     this.convertTime = this.convertTime.bind(this);
   }
 
-  convertTime(unix) {
+  convertTime(unix, type) {
     const unixTimestamp = unix;
 
     const milliseconds = unixTimestamp * 1000;
 
     const dateObject = new Date(milliseconds);
 
-    return dateObject.toLocaleString("en-US", { weekday: "long" });
+    return dateObject.toLocaleString("en-US", type);
 
     // dateObject.toLocaleString("en-US", {weekday: "long"}) // Monday
     // dateObject.toLocaleString("en-US", {month: "long"}) // December
@@ -27,18 +27,36 @@ export default class Day extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.convertTime(this.props.dayData.dt)}</p>
-        <div>
-          <img
-            src={require(`../images/icons/${this.props.dayData.weather[0].icon}.svg`)}
-            alt=""
-            width="50px"
-            height="50px"
-          />
+      <div className="day-container">
+        <div className="day-and-date">
+          <p className="day-name">
+            {this.convertTime(this.props.dayData.dt, { weekday: "long" })}
+          </p>
+          <p className="month-date">
+            {this.convertTime(this.props.dayData.dt, { month: "long" })}{" "}
+            {this.convertTime(this.props.dayData.dt, { day: "numeric" })}
+          </p>
         </div>
-        <p>{Math.round(this.props.dayData.temp.max)}</p>
-        <p>{this.props.dayData.weather[0].description}</p>
+        <div>
+          <div className="day-image-temps">
+            <div>
+              <img
+                src={require(`../images/icons/${this.props.dayData.weather[0].icon}.svg`)}
+                alt=""
+                width="50px"
+                height="50px"
+              />
+            </div>
+            <div className="day-temps">
+              <p>Hi: {Math.round(this.props.dayData.temp.max)}</p>
+              <p>Lo: {Math.round(this.props.dayData.temp.min)}</p>
+            </div>
+          </div>
+
+          <p className="day-precip">
+            Chance of precip: {Math.round(this.props.dayData.pop * 100) + "%"}
+          </p>
+        </div>
       </div>
     );
   }

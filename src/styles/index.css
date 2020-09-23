@@ -25,6 +25,35 @@ body {
   align-items: center;
 }
 
+/* Search Bar */
+
+form {
+  width: 100%;
+  max-width: 540px;
+  margin: auto;
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  background-color: var(--darkGray);
+  box-shadow: var(--boxShadow);
+  transition: 0.25s;
+}
+
+input:focus {
+  outline: none;
+  background-color: var(--darkestGray);
+}
+
+button {
+  display: none;
+}
+
 /* Univeral Styles (for all sections) */
 
 h1 {
@@ -32,7 +61,7 @@ h1 {
   padding: 1rem;
   width: 100%;
   max-width: 540px;
-  margin: 4rem auto 1rem auto;
+  margin: 2rem auto 1rem auto;
   text-align: center;
   font-size: 2rem;
   border-radius: var(--radius);
@@ -41,10 +70,10 @@ h1 {
 
 .section {
   background-color: var(--darkGray);
-  padding: 2rem;
+  padding: 1rem 2rem;
   width: 100%;
   max-width: 540px;
-  margin: auto;
+  margin: 0 auto 2rem auto;
   border-radius: var(--radius);
   box-shadow: var(--boxShadow);
 }
@@ -72,6 +101,8 @@ h2 {
 
 .current-main-temp {
   font-size: 2.5rem;
+  text-align: right;
+  margin-bottom: 0.5rem;
 }
 
 .current-main-condition {
@@ -90,7 +121,7 @@ h2 {
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.212);
 }
 
 .other-conditions p:last-of-type {
@@ -107,7 +138,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 0 0 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.212);
   margin-bottom: 1rem;
 }
 
@@ -130,4 +161,64 @@ h2 {
   font-size: 0.75rem;
   font-weight: 200;
   opacity: 0.7;
+}
+
+/* Daily */
+
+.day-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.212);
+  margin-bottom: 1rem;
+}
+
+.day-container:last-of-type {
+  padding: 0 0 0 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.day-name {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.month-date {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.day-image-temps {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.day-temps {
+  text-align: right;
+  margin-left: 1rem;
+}
+
+.day-temps p:first-of-type {
+  margin-bottom: 0.25rem;
+}
+
+.day-precip {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+/* Footer */
+footer p {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fdfdfdb4;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(253, 255, 136);
 }
