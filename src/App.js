@@ -25,17 +25,19 @@ export default class App extends React.Component {
   }
 
   fetchData() {
-    axios
-      .get(`http://localhost:5000/${this.state.selectedCity}`)
-      .then((res) => {
-        const currently = res.data.currentWeatherData;
-        const hourly = res.data.hourlyWeatherData;
-        const daily = res.data.dailyWeatherData;
-        const alerts = res.data.weatherAlerts;
-        const mapData = res.data.mapData;
-        this.setState({ currently, hourly, daily, alerts, mapData });
-      });
-    console.log("got data");
+    setTimeout(() => {
+      axios
+        .get(`http://localhost:5000/${this.state.selectedCity}`)
+        .then((res) => {
+          const currently = res.data.currentWeatherData;
+          const hourly = res.data.hourlyWeatherData;
+          const daily = res.data.dailyWeatherData;
+          const alerts = res.data.weatherAlerts;
+          const mapData = res.data.mapData;
+          this.setState({ currently, hourly, daily, alerts, mapData });
+        });
+      console.log("got data");
+    }, 1000);
   }
 
   componentDidMount() {
@@ -54,7 +56,11 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.currently.weather) {
-      return <span>Loading...</span>;
+      return (
+        <div className="loading-screen">
+          <span>Loading</span>
+        </div>
+      );
     }
     return (
       <div>
@@ -73,9 +79,15 @@ export default class App extends React.Component {
           currentCity={this.state.mapData}
         />
         <h1>Next 5 Hours</h1>
-        <Hourly data={this.state.hourly} />
+        <div className="section">
+          <Hourly data={this.state.hourly} />
+        </div>
+
         <h1>5 Day Outlook</h1>
-        <Daily data={this.state.daily} />
+        <div className="section">
+          <Daily data={this.state.daily} />
+        </div>
+
         <div>
           Icons made by{" "}
           <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">

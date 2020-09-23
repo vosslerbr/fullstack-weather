@@ -1,5 +1,6 @@
 @import "./variables.css";
 
+/* Body */
 body {
   padding: 1rem;
   background-color: var(--gray);
@@ -12,6 +13,19 @@ body {
     padding: 0.5rem;
   }
 }
+
+/* Loading Screen */
+.loading-screen {
+  font-size: 3rem;
+  font-weight: 600;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Univeral Styles (for all sections) */
 
 h1 {
   background-color: var(--darkGray);
@@ -35,6 +49,8 @@ h1 {
   box-shadow: var(--boxShadow);
 }
 
+/* Current */
+
 h2 {
   text-align: center;
   font-size: 1.5rem;
@@ -47,6 +63,7 @@ h2 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 .current-main-image {
@@ -59,5 +76,58 @@ h2 {
 
 .current-main-condition {
   font-size: 1rem;
+  opacity: 0.7;
+}
+
+.other-conditions {
+  min-width: 220px;
+  width: fit-content;
+  margin: auto;
+}
+
+.other-conditions p {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.other-conditions p:last-of-type {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Hourly */
+
+.hour-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 1rem;
+}
+
+.hour-container:last-of-type {
+  padding: 0 0 0 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.hour-temp-condition {
+  text-align: right;
+  min-width: 100px;
+}
+
+.hour-temp {
+  font-size: 2rem;
+}
+
+.hour-condition {
+  font-size: 0.75rem;
+  font-weight: 200;
   opacity: 0.7;
 }

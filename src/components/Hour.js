@@ -27,18 +27,23 @@ export default class Hour extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.convertTime(this.props.hourData.dt)}</p>
-        <div>
+      <div className="hour-container">
+        <p className="hour-time">{this.convertTime(this.props.hourData.dt)}</p>
+
+        <div className="hour-image">
           <img
             src={require(`../images/icons/${this.props.hourData.weather[0].icon}.svg`)}
-            alt=""
-            width="50px"
-            height="50px"
+            alt={this.props.hourData.weather[0].description + " icon"}
+            width="40px"
+            height="40px"
           />
         </div>
-        <p>{Math.round(this.props.hourData.temp)}</p>
-        <p>{this.props.hourData.weather[0].description}</p>
+        <div className="hour-temp-condition">
+          <p className="hour-temp">{Math.round(this.props.hourData.temp)}</p>
+          <p className="hour-condition">
+            {this.props.hourData.weather[0].description}
+          </p>
+        </div>
       </div>
     );
   }

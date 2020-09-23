@@ -50,13 +50,20 @@ export default class FeelsLike extends Component {
             </div>
           </div>
 
-          <div>
-            <p>Feels Like: {Math.round(this.props.data.feels_like)}</p>
-            <p>Humidity: {Math.round(this.props.data.humidity) + "%"}</p>
+          <div className="other-conditions">
             <p>
-              Wind:
-              {" " + this.getWindDirection(this.props.data.wind_deg)}
-              {" " + Math.round(this.props.data.wind_speed) + "mph"}
+              Feels Like<span>{Math.round(this.props.data.feels_like)}</span>
+            </p>
+            <p>
+              Humidity
+              <span>{Math.round(this.props.data.humidity) + "%"}</span>
+            </p>
+            <p>
+              Wind
+              <span>
+                {" " + this.getWindDirection(this.props.data.wind_deg)}
+                {" " + Math.round(this.props.data.wind_speed) + "mph"}
+              </span>
             </p>
           </div>
         </div>
