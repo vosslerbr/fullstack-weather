@@ -10,8 +10,8 @@
     "start-server": "nodemon dist/main.js",
     "watch": "webpack --watch"
   },
-  "engine": {
-    "node": "12.16.3",
+  "engines": {
+    "node": "12.x",
     "npm": "6.14.7"
   },
   "keywords": [],

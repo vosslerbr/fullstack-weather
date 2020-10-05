@@ -55,8 +55,6 @@ app.get("/:citySearch", (req, res) => {
   });
 });
 
-app.set("port", port);
-
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
